@@ -1,21 +1,18 @@
 #Sistema Bancario_Versão_2
+import textwrap
 
 def menu():
     menu = """\n
-    ========= MENU =========
-    Escolha uma opção:
-
-    [d] Depósito
-    [s] Saque
-    [e] Extrato
-    [nc] Nova Conta
-    [nu] Novo Usuário
-    [lc] Listar Contas
-    [q] Sair
-    
-    ========================
-    """
-    return input(menu)
+    ================ MENU ================
+    [d]\tDepositar
+    [s]\tSacar
+    [e]\tExtrato
+    [nc]\tNova conta
+    [lc]\tListar contas
+    [nu]\tNovo usuário
+    [q]\tSair
+    => """
+    return input(textwrap.dedent(menu))
 
 def depositar(saldo, valor, extrato, /):
     if valor > 0:
@@ -84,12 +81,12 @@ def nova_conta(agencia, numero_conta, usuarios):
 def listar_contas(contas):
     for conta in contas:
         linha = f"""
-            Agência: {conta['agencia']}
-            Nº_Conta: {conta['numero_conta']}
-            Titular: {conta['usuario']['nome']}
+            Agência:\t{conta['agencia']}
+            Nº_Conta:\t\t{conta['numero_conta']}
+            Titular:\t{conta['usuario']['nome']}
         """
         print("=" * 100)
-        print(linha)
+        print(textwrap.dedent(linha))
 
 def main():
     LIMITES_SAQUES = 3
