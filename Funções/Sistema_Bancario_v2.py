@@ -25,13 +25,13 @@ def depositar(saldo, valor, extrato, /):
 
 def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
     if (numero_saques < limite_saques):
-        if (valor > 0 and saque <= limite):
+        if (valor > 0 and valor <= limite):
             if (valor > saldo):
                 print("Atenção, o saldo atual é menor que o valor de saque digitado!\n")
             else:
-                saldo -= saque
+                saldo -= valor
                 numero_saques += 1
-                extrato += f"Saque de R$ {saque:.2f} efetuado.\n"
+                extrato += f"Saque de R$ {valor:.2f} efetuado.\n"
                 print(f"Operação realizada, reitre o valor na boca do caixa.\n")
         elif (valor > limite):
             print("O valor digitado é superior ao limite de saque. Operação cancelada!\n")
